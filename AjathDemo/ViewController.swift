@@ -58,6 +58,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                 self.array.append(ListModel.init(dic: dic as! [String : Any]))
                             }
                             DispatchQueue.main.async {
+                                let array =  self.array.sorted { (model, listmodel) -> Bool in
+                                    Int(model.rank!)! < Int(listmodel.rank!)!
+                                }
+                                self.array = array
                                 self.listTableView?.reloadData()
                             }
                         }
